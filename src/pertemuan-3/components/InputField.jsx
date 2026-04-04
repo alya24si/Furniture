@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-// 🔁 INPUT
+//  INPUT
 function InputField({ label, name, value, onChange, error }) {
   return (
     <div className="mb-4">
@@ -27,7 +27,7 @@ function InputField({ label, name, value, onChange, error }) {
   );
 }
 
-// 🔁 SELECT
+// SELECT
 function SelectField({ label, name, value, onChange, options, error }) {
   return (
     <div className="mb-4">
@@ -163,7 +163,6 @@ export default function UserForm() {
             error={errors.gender}
           />
 
-          {/* 🔥 ROLE (pengganti mode) */}
           <SelectField
             label="Role Game"
             name="role"
