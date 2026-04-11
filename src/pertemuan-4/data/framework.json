@@ -1,0 +1,499 @@
+[
+  {
+    "id": 1,
+    "name": "RSUD Pekanbaru",
+    "category": "General",
+    "rating": 4.5,
+    "price": 150000,
+    "image": "/rsud.jpg",
+    "provider": {
+      "director": "Dr. Andi",
+      "location": {
+        "city": "Pekanbaru",
+        "address": "Jl. Diponegoro"
+      },
+      "contact": {
+        "phone": "0812345671",
+        "email": "rsud@mail.com"
+      }
+    },
+    "services": {
+      "emergency": true,
+      "icu": true,
+      "ambulance": true
+    }
+  },
+  {
+    "id": 2,
+    "name": "RS Awal Bros",
+    "category": "Private",
+    "rating": 4.7,
+    "price": 300000,
+    "image": "/awalbros.jpg",
+    "provider": {
+      "director": "Dr. Budi",
+      "location": {
+        "city": "Pekanbaru",
+        "address": "Jl. Jendral Sudirman"
+      },
+      "contact": {
+        "phone": "0812345672",
+        "email": "awalbros@mail.com"
+      }
+    },
+    "services": {
+      "emergency": true,
+      "icu": true,
+      "ambulance": true
+    }
+  },
+  {
+    "id": 3,
+    "name": "RS Eka Hospital",
+    "category": "Private",
+    "rating": 4.6,
+    "price": 250000,
+    "image": "/ekahospital.jpg",
+    "provider": {
+      "director": "Dr. Citra",
+      "location": {
+        "city": "Pekanbaru",
+        "address": "Jl. Soekarno Hatta"
+      },
+      "contact": {
+        "phone": "0812345673",
+        "email": "eka@mail.com"
+      }
+    },
+    "services": {
+      "emergency": true,
+      "icu": true,
+      "ambulance": true
+    }
+  },
+
+  {
+    "id": 4,
+    "name": "RS Santa Maria",
+    "category": "General",
+    "rating": 4.4,
+    "price": 200000,
+    "image": "/santamariapku.jpg",
+    "provider": {
+      "director": "Dr. Deni",
+      "location": {
+        "city": "Pekanbaru",
+        "address": "Jl. Ahmad Yani"
+      },
+      "contact": {
+        "phone": "0812345674",
+        "email": "santa@mail.com"
+      }
+    },
+    "services": {
+      "emergency": true,
+      "icu": false,
+      "ambulance": true
+    }
+  },
+
+  {
+    "id": 5,
+    "name": "RS Syafira",
+    "category": "Private",
+    "rating": 4.3,
+    "price": 180000,
+    "image": "/syafira.jpg",
+    "provider": {
+      "director": "Dr. Eka",
+      "location": {
+        "city": "Pekanbaru",
+        "address": "Jl. Tuanku Tambusai"
+      },
+      "contact": {
+        "phone": "0812345675",
+        "email": "syafira@mail.com"
+      }
+    },
+    "services": {
+      "emergency": true,
+      "icu": false,
+      "ambulance": true
+    }
+  },
+
+  {
+    "id": 6,
+    "name": "RS Ibnu Sina",
+    "category": "Islamic",
+    "rating": 4.2,
+    "price": 160000,
+    "image": "/ibnusina.jpg",
+    "provider": {
+      "director": "Dr. Fajar",
+      "location": {
+        "city": "Pekanbaru",
+        "address": "Jl. Arifin Ahmad"
+      },
+      "contact": {
+        "phone": "0812345676",
+        "email": "ibnusina@mail.com"
+      }
+    },
+    "services": {
+      "emergency": true,
+      "icu": true,
+      "ambulance": false
+    }
+  },
+
+  {
+    "id": 7,
+    "name": "RS Bhayangkara",
+    "category": "Government",
+    "rating": 4.1,
+    "price": 140000,
+    "image": "/bayangkara.jpg",
+    "provider": {
+      "director": "Dr. Gita",
+      "location": {
+        "city": "Pekanbaru",
+        "address": "Jl. Ahmad Dahlan"
+      },
+      "contact": {
+        "phone": "0812345677",
+        "email": "bhayangkara@mail.com"
+      }
+    },
+    "services": {
+      "emergency": true,
+      "icu": true,
+      "ambulance": true
+    }
+  },
+
+  {
+    "id": 8,
+    "name": "RS Jiwa Tampan",
+    "category": "Specialist",
+    "rating": 4.0,
+    "price": 120000,
+    "image": "/rsjiwa.png",
+    "provider": {
+      "director": "Dr. Hani",
+      "location": {
+        "city": "Pekanbaru",
+        "address": "Jl. HR Soebrantas"
+      },
+      "contact": {
+        "phone": "0812345678",
+        "email": "jiwa@mail.com"
+      }
+    },
+    "services": {
+      "emergency": false,
+      "icu": false,
+      "ambulance": true
+    }
+  },
+
+  {
+    "id": 9,
+    "name": "RSIA Zainab",
+    "category": "Maternity",
+    "rating": 4.6,
+    "price": 220000,
+    "image": "/rszainab.jpg",
+    "provider": {
+      "director": "Dr. Indah",
+      "location": {
+        "city": "Pekanbaru",
+        "address": "Jl. Riau"
+      },
+      "contact": {
+        "phone": "0812345679",
+        "email": "rsia@mail.com"
+      }
+    },
+    "services": {
+      "emergency": true,
+      "icu": false,
+      "ambulance": true
+    }
+  },
+
+  {
+    "id": 10,
+    "name": "RS Orthopedi",
+    "category": "Specialist",
+    "rating": 4.5,
+    "price": 260000,
+    "image": "/orthopedia.jpg",
+    "provider": {
+      "director": "Dr. Joko",
+      "location": {
+        "city": "Pekanbaru",
+        "address": "Jl. Soebrantas"
+      },
+      "contact": {
+        "phone": "0812345680",
+        "email": "ortho@mail.com"
+      }
+    },
+    "services": {
+      "emergency": true,
+      "icu": true,
+      "ambulance": true
+    }
+  },
+
+  {
+    "id": 11,
+    "name": "RS Paru",
+    "category": "Specialist",
+    "rating": 4.3,
+    "price": 210000,
+    "image": "/paru.jpg",
+    "provider": {
+      "director": "Dr. Kiki",
+      "location": {
+        "city": "Pekanbaru",
+        "address": "Jl. Garuda"
+      },
+      "contact": {
+        "phone": "0812345681",
+        "email": "paru@mail.com"
+      }
+    },
+    "services": {
+      "emergency": true,
+      "icu": true,
+      "ambulance": false
+    }
+  },
+
+  {
+    "id": 12,
+    "name": "RS Gigi Mulut",
+    "category": "Specialist",
+    "rating": 4.2,
+    "price": 130000,
+    "image": "/gigi.jpg",
+    "provider": {
+      "director": "Dr. Lala",
+      "location": {
+        "city": "Pekanbaru",
+        "address": "Jl. Nangka"
+      },
+      "contact": {
+        "phone": "0812345682",
+        "email": "gigi@mail.com"
+      }
+    },
+    "services": {
+      "emergency": false,
+      "icu": false,
+      "ambulance": true
+    }
+  },
+
+  {
+    "id": 13,
+    "name": "RS Mata",
+    "category": "Specialist",
+    "rating": 4.4,
+    "price": 170000,
+    "image": "/rsmata.jpg",
+    "provider": {
+      "director": "Dr. Maya",
+      "location": {
+        "city": "Pekanbaru",
+        "address": "Jl. Sudirman"
+      },
+      "contact": {
+        "phone": "0812345683",
+        "email": "mata@mail.com"
+      }
+    },
+    "services": {
+      "emergency": false,
+      "icu": false,
+      "ambulance": true
+    }
+  },
+
+  {
+    "id": 14,
+    "name": "RS Kanker",
+    "category": "Specialist",
+    "rating": 4.7,
+    "price": 500000,
+    "image": "/kanker.jpg",
+    "provider": {
+      "director": "Dr. Nia",
+      "location": {
+        "city": "Pekanbaru",
+        "address": "Jl. Kartini"
+      },
+      "contact": {
+        "phone": "0812345684",
+        "email": "kanker@mail.com"
+      }
+    },
+    "services": {
+      "emergency": true,
+      "icu": true,
+      "ambulance": true
+    }
+  },
+
+  {
+    "id": 15,
+    "name": "RS Anak",
+    "category": "Pediatric",
+    "rating": 4.6,
+    "price": 230000,
+    "image": "/rsandini.jpg",
+    "provider": {
+      "director": "Dr. Oki",
+      "location": {
+        "city": "Pekanbaru",
+        "address": "Jl. Paus"
+      },
+      "contact": {
+        "phone": "0812345685",
+        "email": "anak@mail.com"
+      }
+    },
+    "services": {
+      "emergency": true,
+      "icu": true,
+      "ambulance": true
+    }
+  },
+
+  {
+    "id": 16,
+    "name": "RS Kulit",
+    "category": "Specialist",
+    "rating": 4.2,
+    "price": 150000,
+    "image": "/rskulit.jpg",
+    "provider": {
+      "director": "Dr. Putri",
+      "location": {
+        "city": "Pekanbaru",
+        "address": "Jl. Riau"
+      },
+      "contact": {
+        "phone": "0812345686",
+        "email": "kulit@mail.com"
+      }
+    },
+    "services": {
+      "emergency": false,
+      "icu": false,
+      "ambulance": true
+    }
+  },
+
+  {
+    "id": 17,
+    "name": "RS Jantung",
+    "category": "Specialist",
+    "rating": 4.8,
+    "price": 600000,
+    "image": "/rsjantung.jpg",
+    "provider": {
+      "director": "Dr. Rudi",
+      "location": {
+        "city": "Pekanbaru",
+        "address": "Jl. Ahmad Yani"
+      },
+      "contact": {
+        "phone": "0812345687",
+        "email": "jantung@mail.com"
+      }
+    },
+    "services": {
+      "emergency": true,
+      "icu": true,
+      "ambulance": true
+    }
+  },
+
+  {
+    "id": 18,
+    "name": "RS THT",
+    "category": "Specialist",
+    "rating": 4.1,
+    "price": 180000,
+    "image": "/tht.jpg",
+    "provider": {
+      "director": "Dr. Sari",
+      "location": {
+        "city": "Pekanbaru",
+        "address": "Jl. Soekarno Hatta"
+      },
+      "contact": {
+        "phone": "0812345688",
+        "email": "tht@mail.com"
+      }
+    },
+    "services": {
+      "emergency": false,
+      "icu": false,
+      "ambulance": true
+    }
+  },
+
+  {
+    "id": 19,
+    "name": "RS Ginjal",
+    "category": "Specialist",
+    "rating": 4.5,
+    "price": 400000,
+    "image": "/rsginjal.jpg",
+    "provider": {
+      "director": "Dr. Toni",
+      "location": {
+        "city": "Pekanbaru",
+        "address": "Jl. Nangka"
+      },
+      "contact": {
+        "phone": "0812345689",
+        "email": "ginjal@mail.com"
+      }
+    },
+    "services": {
+      "emergency": true,
+      "icu": true,
+      "ambulance": true
+    }
+  },
+
+  {
+    "id": 20,
+    "name": "RS Umum Sejahtera",
+    "category": "General",
+    "rating": 4.3,
+    "price": 170000,
+    "image": "/rssejahtera.jpg",
+    "provider": {
+      "director": "Dr. Vina",
+      "location": {
+        "city": "Pekanbaru",
+        "address": "Jl. Harapan"
+      },
+      "contact": {
+        "phone": "0812345690",
+        "email": "sejahtera@mail.com"
+      }
+    },
+    "services": {
+      "emergency": true,
+      "icu": true,
+      "ambulance": true
+    }
+  }
+]
