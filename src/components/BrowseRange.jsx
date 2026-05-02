@@ -1,15 +1,15 @@
 const BrowseRange = () => {
   const categories = [
-    { name: 'Dining', image: '/assets/images/dining_room.png' },
-    { name: 'Living', image: '/assets/images/living_room.png' },
-    { name: 'Bedroom', image: '/assets/images/bedroom.png' },
+    { name: 'Ruang Makan', image: '/assets/images/dining_room.png' },
+    { name: 'Ruang Tamu', image: '/assets/images/living_room.png' },
+    { name: 'Kamar Tidur', image: '/assets/images/bedroom.png' },
   ];
 
   return (
     <section style={styles.section}>
       <div className="container">
-        <h2 className="section-title">Browse The Range</h2>
-        <p className="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h2 className="section-title">Jelajahi Koleksi Kami</h2>
+        <p className="section-subtitle">Temukan furniture terbaik untuk setiap ruangan di rumah Anda</p>
         
         <div style={styles.grid}>
           {categories.map((cat, index) => (
@@ -29,6 +29,7 @@ const BrowseRange = () => {
 const styles = {
   section: {
     padding: '80px 0',
+    backgroundColor: '#E8F4F8', // Soft blue background
   },
   grid: {
     display: 'grid',

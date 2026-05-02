@@ -4,26 +4,26 @@ const HowItWorks = () => {
   const steps = [
     {
       icon: <FiLock />,
-      title: '1. Purchase Securely',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      title: '1. Pesan Dengan Aman',
+      description: 'Lakukan pemesanan dengan sistem pembayaran yang aman dan terpercaya.'
     },
     {
       icon: <FiBox />,
-      title: '2. Ships From Warehouse',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      title: '2. Dikirim Dari Gudang',
+      description: 'Pesanan Anda akan segera diproses dan dikirim dari gudang kami.'
     },
     {
       icon: <FiHome />,
-      title: '3. Style Your Space',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      title: '3. Percantik Ruangan',
+      description: 'Furniture tiba dan siap mempercantik ruangan Anda.'
     }
   ];
 
   return (
     <section style={styles.section}>
       <div className="container text-center">
-        <h2 className="section-title">How It Works</h2>
-        <p className="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h2 className="section-title">Ayo Pesan!</h2>
+        <p className="section-subtitle">Proses mudah dan cepat dalam 3 langkah sederhana</p>
         
         <div style={styles.grid}>
           {steps.map((step, index) => (

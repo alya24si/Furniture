@@ -1,6 +1,6 @@
 const Inspiration = () => {
   const images = [
-    '/assets/images/living_room.png',
+    '/assets/images/living_room.jpg',
     '/assets/images/bedroom.png',
     '/assets/images/dining_room.png',
   ];
@@ -8,13 +8,15 @@ const Inspiration = () => {
   return (
     <section style={styles.section}>
       <div className="container text-center">
-        <h2 className="section-title">Inspiration Collection</h2>
-        <p className="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        {/* 👇 JUDUL & SUBTITLE DIUBAH KE BAHASA INDONESIA */}
+        <h2 className="section-title">Koleksi Inspirasi Desain</h2>
+        <p className="section-subtitle">Temukan ide penataan ruangan modern yang sesuai dengan gaya hidup dan kebutuhan Anda</p>
         
         <div style={styles.grid}>
           {images.map((img, index) => (
             <div key={index} style={styles.imageCard}>
-              <img src={img} alt={`Inspiration ${index + 1}`} style={styles.image} />
+              {/* 👇 ALT TEXT LEBIH RELEVAN UNTUK SEO & AKSESIBILITAS */}
+              <img src={img} alt={`Inspirasi desain ruangan ${index + 1}`} style={styles.image} />
             </div>
           ))}
         </div>
@@ -26,6 +28,7 @@ const Inspiration = () => {
 const styles = {
   section: {
     padding: '80px 0',
+    backgroundColor: '#E8F4F8', // ✅ Background Soft Blue ditambahkan di sini
   },
   grid: {
     display: 'grid',

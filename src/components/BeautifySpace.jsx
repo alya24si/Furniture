@@ -3,14 +3,19 @@ const BeautifySpace = () => {
     <section style={styles.section}>
       <div className="container" style={styles.container}>
         <div style={styles.textContent}>
-          <h2 style={styles.title}>Beautify Your Space</h2>
+          {/* Judul diubah sesuai Opsi 3 */}
+          <h2 style={styles.title}>Solusi Furniture untuk Setiap Sudut</h2>
+          
+          {/* Deskripsi diubah sesuai Opsi 3 */}
           <p style={styles.description}>
-            Do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+            Dari ruang tamu hingga kamar tidur, kami menyediakan pilihan furniture yang fleksibel dan mudah dikombinasikan. Wujudkan tata ruang yang sesuai dengan kepribadian Anda.
           </p>
-          <button className="btn btn-primary" style={{borderRadius: '50px'}}>Learn More</button>
+          
+          <button className="btn btn-primary" style={{borderRadius: '50px'}}>Lihat Koleksi</button>
         </div>
+        
         <div style={styles.imageContent}>
-          <img src="/assets/images/beautify_space.png" alt="Beautify your space" style={styles.image} />
+          <img src="/assets/images/beautify_space.jpg" alt="Interior furniture modern yang nyaman dan elegan" style={styles.image} />
         </div>
       </div>
     </section>

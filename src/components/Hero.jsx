@@ -3,12 +3,15 @@ const Hero = () => {
     <section style={styles.hero}>
       <div className="container" style={styles.container}>
         <div style={styles.card}>
-          <p style={styles.subtitle}>New Arrival</p>
-          <h1 style={styles.title}>Discover Our <br/> New Collection</h1>
+          <span style={styles.badge}>🔥 Promo Spesial</span>
+          <h1 style={styles.title}>Furniture Premium <br/> Harga Terjangkau</h1>
           <p style={styles.description}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.
+            Gratis ongkir & garansi 3 tahun. Transformasi ruangan Anda sekarang dengan koleksi eksklusif kami.
           </p>
-          <button className="btn btn-primary" style={styles.btn}>BUY NOW</button>
+          <div style={styles.buttonGroup}>
+            <button className="btn btn-primary" style={styles.btn}>Belanja Sekarang</button>
+            <button style={styles.btnOutline}>Lihat Katalog</button>
+          </div>
         </div>
       </div>
     </section>
@@ -19,7 +22,7 @@ const styles = {
   hero: {
     height: '80vh',
     minHeight: '600px',
-    backgroundImage: `url('/assets/images/hero.png')`,
+    backgroundImage: `url('/assets/images/hero.jpg')`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     position: 'relative',
@@ -29,26 +32,31 @@ const styles = {
   container: {
     width: '100%',
     display: 'flex',
-    justifyContent: 'flex-end', /* Puts the card on the right side */
+    justifyContent: 'flex-start', // 👈 Kartu di kiri
+    padding: '0 5%',
   },
   card: {
     backgroundColor: 'var(--bg-card)',
-    padding: '60px',
-    borderRadius: '8px',
-    maxWidth: '540px',
+    padding: '50px',
+    borderRadius: '10px',
+    maxWidth: '550px',
     boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
   },
-  subtitle: {
-    color: 'var(--text-dark)',
+  badge: {
+    display: 'inline-block',
+    backgroundColor: '#FF6B6B',
+    color: '#fff',
+    padding: '6px 12px',
+    borderRadius: '20px',
+    fontSize: '13px',
     fontWeight: '600',
-    letterSpacing: '2px',
     marginBottom: '16px',
   },
   title: {
     color: 'var(--text-dark)',
-    fontSize: '48px',
+    fontSize: '46px',
     fontWeight: '700',
-    lineHeight: 1.2,
+    lineHeight: 1.15,
     marginBottom: '16px',
   },
   description: {
@@ -57,12 +65,31 @@ const styles = {
     marginBottom: '32px',
     lineHeight: 1.5,
   },
+  buttonGroup: {
+    display: 'flex',
+    gap: '16px',
+    flexWrap: 'wrap',
+  },
   btn: {
-    padding: '16px 48px',
-    fontSize: '16px',
+    padding: '14px 36px',
+    fontSize: '15px',
     textTransform: 'uppercase',
-    letterSpacing: '1px',
+    letterSpacing: '0.5px',
     backgroundColor: 'var(--primary)',
+    borderRadius: '6px',
+    border: 'none',
+    cursor: 'pointer',
+  },
+  btnOutline: {
+    padding: '14px 36px',
+    fontSize: '15px',
+    textTransform: 'uppercase',
+    letterSpacing: '0.5px',
+    backgroundColor: 'transparent',
+    border: '2px solid var(--primary)',
+    color: 'var(--primary)',
+    borderRadius: '6px',
+    cursor: 'pointer',
   }
 };
 

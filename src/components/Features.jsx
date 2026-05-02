@@ -1,26 +1,26 @@
-import { FiTruck, FiHeadphones, FiCheckCircle, FiShield } from 'react-icons/fi';
+import { FiAward, FiTool, FiTruck, FiHeart } from 'react-icons/fi';
 
 const Features = () => {
   const features = [
     {
+      icon: <FiAward />,
+      title: 'Material Premium',
+      description: 'Kayu berkualitas tinggi dengan finishing terbaik'
+    },
+    {
+      icon: <FiTool />,
+      title: 'Custom Furniture',
+      description: 'Sesuaikan ukuran dan desain sesuai kebutuhan'
+    },
+    {
       icon: <FiTruck />,
-      title: 'Free Delivery',
-      description: 'Lorem ipsum dolor sit amet.'
+      title: 'Pengiriman Aman',
+      description: 'Gratis ongkir & garansi sampai tujuan'
     },
     {
-      icon: <FiHeadphones />,
-      title: 'Support 24/7',
-      description: 'Lorem ipsum dolor sit amet.'
-    },
-    {
-      icon: <FiCheckCircle />,
-      title: '100% Authentic',
-      description: 'Lorem ipsum dolor sit amet.'
-    },
-    {
-      icon: <FiShield />,
-      title: 'Secure Payment',
-      description: 'Lorem ipsum dolor sit amet.'
+      icon: <FiHeart />,
+      title: 'Garansi 5 Tahun',
+      description: 'Layanan after-sales terbaik untuk Anda'
     }
   ];
 

@@ -5,7 +5,7 @@ const Header = () => {
     <header style={styles.header}>
       <div className="container" style={styles.container}>
         <div style={styles.logo}>
-          <h2>Furniture</h2>
+          <h2>Furniture Alya</h2>
         </div>
         
         <nav style={styles.nav}>
