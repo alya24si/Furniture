@@ -1,309 +1,199 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { FiMail, FiLock, FiPackage } from 'react-icons/fi';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import {
+  FiEye,
+  FiEyeOff,
+  FiChrome,
+  FiFacebook,
+} from "react-icons/fi";
 
 const Login = () => {
   const [dataForm, setDataForm] = useState({
-    email: 'emilys',
-    password: 'emilyspass'
+    email: "",
+    password: "",
+    remember: false,
   });
-  const [error, setError] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError(false);
+    setError("");
 
-    axios
-      .post("https://dummyjson.com/user/login", {
+    try {
+      const response = await axios.post("https://dummyjson.com/user/login", {
         username: dataForm.email,
         password: dataForm.password,
-      })
-      .then((response) => {
-        if (response.status !== 200) {
-          setError(response.data.message);
-          return;
-        }
-        navigate("/admin/dashboard");
-      })
-      .catch((err) => {
-        setError(err.response?.data?.message || "Login gagal");
-      })
-      .finally(() => {
-        setLoading(false);
       });
+
+      if (response.status === 200) {
+        navigate("/admin/dashboard");
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || "Login gagal");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setDataForm(prev => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    setDataForm((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  const handleSocialLogin = (provider) => {
+    console.log(`Login with ${provider}`);
   };
 
   return (
-    <div style={styles.container}>
-      {/* Background Pattern */}
-      <div style={styles.bgPattern}></div>
-      <div style={styles.bgGradient}></div>
-      
-      <div style={styles.content}>
-        <div style={styles.card}>
-          {/* Logo */}
-          <div style={styles.logo}>
-            <div style={styles.logoBox}>
-              <FiPackage style={styles.logoIcon} />
-            </div>
-            <h1 style={styles.brandName}>
-              FURNITURE<span style={styles.brandAccent}>ALYA</span>
-            </h1>
-          </div>
+    <div className="min-h-screen w-full flex items-center justify-center bg-gray-100 p-4 md:p-6">
+      <div className="max-w-7xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
+        
+        {/* LEFT */}
+        <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-purple-100 via-purple-50 to-pink-50 p-16 items-center justify-center relative overflow-hidden">
+          <div className="absolute top-10 left-10 w-40 h-40 bg-purple-200 rounded-full blur-3xl opacity-50" />
+          <div className="absolute bottom-10 right-10 w-48 h-48 bg-pink-200 rounded-full blur-3xl opacity-50" />
           
-          {/* Header */}
-          <div style={styles.header}>
-            <h2 style={styles.title}>Admin Portal</h2>
-            <p style={styles.subtitle}>Masuk untuk mengakses dashboard</p>
+          <div className="relative z-10 flex flex-col items-center">
+            <svg width="400" height="450" viewBox="0 0 400 450" fill="none">
+              <circle cx="140" cy="90" r="40" fill="#9333EA" />
+              <path d="M140 135 C105 135 78 162 78 197 L78 322 C78 340 92 354 110 354 L170 354 C188 354 202 340 202 322 L202 197 C202 162 175 135 140 135 Z" fill="#9333EA" />
+            </svg>
+            <p className="text-purple-900 font-bold text-2xl mt-10 text-center">
+              Secure & Easy Access
+            </p>
           </div>
-          
-          {/* Form */}
-          <form onSubmit={handleSubmit} style={styles.form}>
-            {error && <div style={styles.error}>{error}</div>}
+        </div>
+
+        {/* RIGHT */}
+        <div className="w-full md:w-1/2 bg-white p-12 md:p-16">
+          <div className="max-w-lg mx-auto">
             
-            <div style={styles.inputWrapper}>
-              <label style={styles.label}>Username / Email</label>
-              <div style={styles.inputGroup}>
-                <FiMail style={styles.inputIcon} />
+            <div className="mb-12">
+              <h1 className="text-4xl font-semibold text-gray-800 mb-3">Welcome to</h1>
+              <h2 className="text-5xl font-bold text-purple-600">Furniture Alya</h2>
+            </div>
+
+            {/* Social */}
+            <div className="space-y-4 mb-10">
+              <button
+                type="button"
+                onClick={() => handleSocialLogin("google")}
+                className="w-full h-14 border-2 border-gray-200 rounded-xl flex items-center justify-center gap-3"
+              >
+                <FiChrome className="w-6 h-6 text-red-500" />
+                Login with Google
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleSocialLogin("facebook")}
+                className="w-full h-14 border-2 border-gray-200 rounded-xl flex items-center justify-center gap-3"
+              >
+                <FiFacebook className="w-6 h-6 text-blue-600" />
+                Login with Facebook
+              </button>
+            </div>
+
+            <div className="flex items-center gap-4 mb-10">
+              <div className="flex-1 h-px bg-gray-200" />
+              <span className="text-base text-gray-400">OR</span>
+              <div className="flex-1 h-px bg-gray-200" />
+            </div>
+
+            <form onSubmit={handleSubmit}>
+              
+              {error && (
+                <div className="bg-red-50 border border-red-200 text-red-600 px-5 py-4 rounded-xl text-center mb-8">
+                  {error}
+                </div>
+              )}
+
+              {/* EMAIL */}
+              <div className="mb-8">
+                <label className="block text-base font-bold text-gray-700 mb-3">
+                  Email
+                </label>
                 <input
-                  type="text"
+                  type="email"
                   name="email"
                   value={dataForm.email}
                   onChange={handleChange}
-                  style={styles.input}
-                  placeholder="Masukkan username atau email"
+                  className="w-full h-14 pl-5 pr-5 bg-gray-50 border-2 border-gray-200 rounded-xl"
+                  placeholder="Masukkan email..."
                   required
                 />
               </div>
-            </div>
-            
-            <div style={styles.inputWrapper}>
-              <label style={styles.label}>Password</label>
-              <div style={styles.inputGroup}>
-                <FiLock style={styles.inputIcon} />
-                <input
-                  type="password"
-                  name="password"
-                  value={dataForm.password}
-                  onChange={handleChange}
-                  style={styles.input}
-                  placeholder="Masukkan password"
-                  required
-                />
+
+              {/* PASSWORD */}
+              <div className="mb-8">
+                <label className="block text-base font-bold text-gray-700 mb-3">
+                  Password
+                </label>
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    value={dataForm.password}
+                    onChange={handleChange}
+                    className="w-full h-14 pl-5 pr-14 bg-gray-50 border-2 border-gray-200 rounded-xl"
+                    placeholder="Masukkan password..."
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-400"
+                  >
+                    {showPassword ? <FiEyeOff /> : <FiEye />}
+                  </button>
+                </div>
               </div>
-            </div>
-            
-            <button 
-              type="submit" 
-              disabled={loading} 
-              style={{...styles.button, ...(loading ? styles.buttonDisabled : {})}}
-            >
-              {loading ? (
-                <span style={styles.loadingText}>⚡ Processing...</span>
-              ) : (
-                <span style={styles.buttonText}>Sign In</span>
-              )}
-            </button>
-          </form>
-          
-          {/* Footer */}
-          <p style={styles.footer}>© 2026 Furniture Alya. All rights reserved.</p>
+
+              {/* Remember */}
+              <div className="flex items-center justify-between mb-10">
+                <label className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    name="remember"
+                    checked={dataForm.remember}
+                    onChange={handleChange}
+                  />
+                  Remember me
+                </label>
+                <a href="/forgot-password" className="text-purple-600">
+                  Forgot Password?
+                </a>
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full h-16 bg-purple-600 text-white rounded-xl"
+              >
+                {loading ? "Processing..." : "Login"}
+              </button>
+
+              <p className="text-center mt-8">
+                Don't have an account?{" "}
+                <a href="/register" className="text-purple-600">
+                  Register
+                </a>
+              </p>
+            </form>
+
+          </div>
         </div>
       </div>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    position: 'relative',
-    width: '100vw',
-    height: '100vh',
-    minHeight: '100vh',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    overflow: 'hidden',
-    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif",
-  },
-  bgPattern: {
-    position: 'absolute',
-    inset: 0,
-    backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23667eea' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-    opacity: 0.3,
-  },
-  bgGradient: {
-    position: 'absolute',
-    inset: 0,
-    background: 'linear-gradient(135deg, #334155 0%, #475569 50%, #64748b 100%)',
-  },
-  content: {
-    position: 'relative',
-    zIndex: 10,
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: '20px',
-  },
-  card: {
-    backgroundColor: 'rgba(255, 255, 255, 0.95)',
-    backdropFilter: 'blur(20px)',
-    WebkitBackdropFilter: 'blur(20px)',
-    padding: '48px 40px',
-    borderRadius: '24px',
-    border: '1px solid rgba(102, 126, 234, 0.3)',
-    boxShadow: '0 32px 64px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(102, 126, 234, 0.1)',
-    width: '100%',
-    maxWidth: '440px',
-    minWidth: '320px',
-  },
-  logo: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '14px',
-    marginBottom: '40px',
-  },
-  logoBox: {
-    width: '52px',
-    height: '52px',
-    backgroundColor: 'rgba(102, 126, 234, 0.15)',
-    borderRadius: '14px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    border: '2px solid rgba(102, 126, 234, 0.3)',
-  },
-  logoIcon: {
-    fontSize: '28px',
-    color: '#667eea',
-  },
-  brandName: {
-    fontSize: '28px',
-    fontWeight: '800',
-    color: '#1e293b',
-    margin: 0,
-    letterSpacing: '0.5px',
-  },
-  brandAccent: {
-    color: '#667eea',
-    fontWeight: '900',
-  },
-  header: {
-    textAlign: 'center',
-    marginBottom: '36px',
-  },
-  title: {
-    fontSize: '26px',
-    fontWeight: '700',
-    color: '#1e293b',
-    marginBottom: '8px',
-    letterSpacing: '0.3px',
-  },
-  subtitle: {
-    fontSize: '14px',
-    color: '#475569',
-    margin: 0,
-  },
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '24px',
-  },
-  inputWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '8px',
-  },
-  label: {
-    fontSize: '13px',
-    fontWeight: '600',
-    color: '#334155',
-    letterSpacing: '0.3px',
-  },
-  inputGroup: {
-    position: 'relative',
-    display: 'flex',
-    alignItems: 'center',
-    backgroundColor: 'rgba(241, 245, 249, 0.8)',
-    borderRadius: '12px',
-    border: '1.5px solid rgba(102, 126, 234, 0.3)',
-    transition: 'all 0.3s ease',
-    padding: '0 16px',
-  },
-  inputIcon: {
-    fontSize: '18px',
-    color: '#667eea',
-    marginRight: '12px',
-    flexShrink: 0,
-  },
-  input: {
-    flex: 1,
-    padding: '14px 0',
-    border: 'none',
-    backgroundColor: 'transparent',
-    fontSize: '14px',
-    outline: 'none',
-    color: '#1e293b',
-    width: '100%',
-  },
-  button: {
-    marginTop: '8px',
-    padding: '16px',
-    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-    color: 'white',
-    border: 'none',
-    borderRadius: '12px',
-    fontSize: '15px',
-    fontWeight: '700',
-    cursor: 'pointer',
-    boxShadow: '0 8px 24px rgba(102, 126, 234, 0.35)',
-    transition: 'all 0.3s ease',
-    letterSpacing: '0.5px',
-  },
-  buttonDisabled: {
-    opacity: 0.7,
-    cursor: 'not-allowed',
-  },
-  buttonText: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '8px',
-  },
-  loadingText: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '8px',
-    animation: 'pulse 1.5s ease-in-out infinite',
-  },
-  error: {
-    backgroundColor: 'rgba(239, 68, 68, 0.15)',
-    color: '#dc2626',
-    padding: '12px 16px',
-    borderRadius: '10px',
-    fontSize: '13px',
-    textAlign: 'center',
-    border: '1px solid rgba(239, 68, 68, 0.3)',
-  },
-  footer: {
-    fontSize: '12px',
-    color: '#475569',
-    textAlign: 'center',
-    marginTop: '32px',
-    paddingTop: '24px',
-    borderTop: '1px solid rgba(102, 126, 234, 0.2)',
-  }
 };
 
 export default Login;
