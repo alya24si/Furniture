@@ -1,18 +1,18 @@
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
+import Sidebar from "../components/Sidebar";
 
-const MainLayout = () => {
+export default function MainLayout() {
   return (
-    <div className="flex flex-col min-h-screen w-full">
-      <Header />
-      {/* flex-1 akan mendorong footer ke paling bawah secara otomatis */}
-      <main className="flex-1 w-full">
+    <div style={{ display: "flex", minHeight: "100vh" }}>
+      
+      {/* Sidebar */}
+      <Sidebar />
+
+      {/* Content */}
+      <div style={{ flex: 1, padding: "20px" }}>
         <Outlet />
-      </main>
-      <Footer />
+      </div>
+
     </div>
   );
-};
-
-export default MainLayout;
+}

@@ -10,7 +10,7 @@ const Sidebar = () => {
     { icon: FiUser, label: 'Profile', path: '/admin/profile' },
     { icon: FiBarChart2, label: 'Leaderboard', path: '/admin/leaderboard' },
     { icon: FiShoppingCart, label: 'Order', path: '/admin/order' },
-    { icon: FiBox, label: 'Product', path: '/admin/product' },
+    { icon: FiBox, label: 'Product', path: '/admin/produk' },
     { icon: FiTrendingUp, label: 'Sales Report', path: '/admin/sales' },
     { icon: FiMessageSquare, label: 'Message', path: '/admin/message' },
   ];
