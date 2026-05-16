@@ -9,39 +9,8 @@ import Sidebar from '../../components/Sidebar';
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [total, setTotal] = useState(0);
-  const [skip, setSkip] = useState(0);
-  const limit = 10;
+  
   const [expenseFilter, setExpenseFilter] = useState('week');
-
-  useEffect(() => {
-    fetchProducts(skip);
-  }, [skip]);
-
-  const fetchProducts = (skipValue) => {
-    setLoading(true);
-    fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skipValue}`)
-      .then(res => res.json())
-      .then(data => {
-        setProducts(data.products);
-        setTotal(data.total);
-        setLoading(false);
-      })
-      .catch(error => {
-        console.error('Error fetching products:', error);
-        setLoading(false);
-      });
-  };
-
-  const handleNextPage = () => {
-    if (skip + limit < total) setSkip(skip + limit);
-  };
-
-  const handlePrevPage = () => {
-    if (skip - limit >= 0) setSkip(skip - limit);
-  };
 
   // Stats Data - Furniture Specific
   const stats = [
@@ -108,7 +77,7 @@ const Dashboard = () => {
 
   return (
     <div style={styles.container}>
-      <Sidebar />
+      {/* <Sidebar /> */}
       
       <div style={styles.mainContent}>
         {/* Header */}
@@ -302,91 +271,6 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* Products Table */}
-          <div style={styles.card}>
-            <div style={styles.cardHeader}>
-              <div>
-                <h3 style={styles.cardTitle}>Daftar Produk Furniture</h3>
-                <p style={styles.cardSubtitle}>Kelola semua produk furniture yang tersedia</p>
-              </div>
-              <span style={styles.badgeTotal}>{total} Total Produk</span>
-            </div>
-
-            {loading ? (
-              <div style={styles.loading}>
-                <div style={styles.spinner}></div>
-              </div>
-            ) : (
-              <div style={styles.tableWrapper}>
-                <table style={styles.table}>
-                  <thead>
-                    <tr style={styles.tableHeader}>
-                      <th style={styles.th}>#</th>
-                      <th style={styles.th}>Produk</th>
-                      <th style={styles.th}>Kategori</th>
-                      <th style={styles.th}>Harga</th>
-                      <th style={styles.th}>Stok</th>
-                      <th style={styles.th}>Rating</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {products.map((product, index) => (
-                      <tr key={product.id} style={styles.tableRow}>
-                        <td style={styles.td}>
-                          <span style={styles.number}>{String(skip + index + 1).padStart(2, '0')}</span>
-                        </td>
-                        <td style={styles.td}>
-                          <div style={styles.productInfo}>
-                            <img src={product.thumbnail} alt={product.title} style={styles.productImage} />
-                            <div>
-                              <div style={styles.productName}>{product.title}</div>
-                              <div style={styles.productBrand}>{product.brand}</div>
-                            </div>
-                          </div>
-                        </td>
-                        <td style={styles.td}>
-                          <span style={styles.category}>{product.category}</span>
-                        </td>
-                        <td style={styles.td}>
-                          <span style={styles.price}>{formatCurrency(product.price * 15000)}</span>
-                        </td>
-                        <td style={styles.td}>
-                          <span style={{
-                            ...styles.stockIndicator,
-                            backgroundColor: product.stock < 10 ? 'rgba(239, 68, 68, 0.15)' : 'rgba(16, 185, 129, 0.15)',
-                            color: product.stock < 10 ? '#ef4444' : '#059669'
-                          }}>
-                            {product.stock} unit
-                          </span>
-                        </td>
-                        <td style={styles.td}>
-                          <div style={styles.rating}>
-                            <FiStar style={{color: '#fbbf24', fill: '#fbbf24'}} />
-                            <span>{product.rating}</span>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
-
-            {/* Pagination */}
-            <div style={styles.pagination}>
-              <p style={styles.showingText}>
-                Menampilkan <span style={styles.highlight}>{skip + 1}</span> sampai <span style={styles.highlight}>{Math.min(skip + limit, total)}</span> dari <span style={styles.highlight}>{total}</span> produk
-              </p>
-              <div style={styles.paginationButtons}>
-                <button onClick={handlePrevPage} disabled={skip === 0} style={{...styles.btnPage, ...(skip === 0 ? styles.btnDisabled : {})}}>Sebelumnya</button>
-                <div style={styles.pageInfo}>
-                  <span style={styles.currentPage}>{Math.floor(skip / limit) + 1}</span>
-                  <span style={styles.totalPages}>/ {Math.ceil(total / limit)}</span>
-                </div>
-                <button onClick={handleNextPage} disabled={skip + limit >= total} style={{...styles.btnPage, ...(skip + limit >= total ? styles.btnDisabled : {})}}>Selanjutnya</button>
-              </div>
-            </div>
-          </div>
         </main>
       </div>
     </div>
@@ -833,155 +717,6 @@ const styles = {
     fontSize: '13px',
     fontWeight: '600',
     cursor: 'pointer',
-  },
-  loading: {
-    padding: '80px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  spinner: {
-    width: '40px',
-    height: '40px',
-    border: '4px solid #e2e8f0',
-    borderTopColor: '#6366f1',
-    borderRadius: '50%',
-    animation: 'spin 1s linear infinite',
-  },
-  tableWrapper: {
-    overflowX: 'auto',
-  },
-  table: {
-    width: '100%',
-    borderCollapse: 'collapse',
-  },
-  tableHeader: {
-    backgroundColor: '#f8fafc',
-  },
-  th: {
-    padding: '16px 24px',
-    textAlign: 'left',
-    fontSize: '12px',
-    fontWeight: '600',
-    color: '#64748b',
-    textTransform: 'uppercase',
-    letterSpacing: '0.5px',
-    borderBottom: '1px solid rgba(203, 213, 225, 0.6)',
-  },
-  tableRow: {
-    transition: 'background-color 0.2s ease',
-  },
-  td: {
-    padding: '16px 24px',
-    borderBottom: '1px solid rgba(203, 213, 225, 0.4)',
-    fontSize: '14px',
-    color: '#475569',
-  },
-  number: {
-    fontFamily: 'monospace',
-    color: '#64748b',
-    fontWeight: '500',
-  },
-  productInfo: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '12px',
-  },
-  productImage: {
-    width: '50px',
-    height: '50px',
-    borderRadius: '10px',
-    objectFit: 'cover',
-  },
-  productName: {
-    fontWeight: '600',
-    color: '#1e293b',
-    marginBottom: '2px',
-  },
-  productBrand: {
-    fontSize: '12px',
-    color: '#64748b',
-  },
-  category: {
-    padding: '6px 12px',
-    backgroundColor: 'rgba(139, 92, 246, 0.12)',
-    color: '#7c3aed',
-    borderRadius: '6px',
-    fontSize: '12px',
-    fontWeight: '600',
-    display: 'inline-block',
-  },
-  price: {
-    fontWeight: '600',
-    color: '#1e293b',
-  },
-  stockIndicator: {
-    padding: '6px 12px',
-    borderRadius: '6px',
-    fontSize: '12px',
-    fontWeight: '600',
-    display: 'inline-block',
-  },
-  rating: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '6px',
-    fontSize: '14px',
-    fontWeight: '600',
-    color: '#1e293b',
-  },
-  pagination: {
-    padding: '20px 32px',
-    borderTop: '1px solid rgba(203, 213, 225, 0.6)',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: '#f8fafc',
-  },
-  showingText: {
-    fontSize: '13px',
-    color: '#64748b',
-  },
-  highlight: {
-    color: '#1e293b',
-    fontWeight: '600',
-  },
-  paginationButtons: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '12px',
-  },
-  btnPage: {
-    padding: '8px 16px',
-    backgroundColor: 'white',
-    border: '2px solid #e2e8f0',
-    color: '#475569',
-    borderRadius: '10px',
-    fontSize: '13px',
-    fontWeight: '600',
-    cursor: 'pointer',
-  },
-  btnDisabled: {
-    opacity: 0.5,
-    cursor: 'not-allowed',
-  },
-  pageInfo: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '4px',
-  },
-  currentPage: {
-    backgroundColor: '#6366f1',
-    color: 'white',
-    padding: '6px 12px',
-    borderRadius: '8px',
-    fontSize: '13px',
-    fontWeight: '600',
-  },
-  totalPages: {
-    color: '#64748b',
-    fontSize: '13px',
-    fontWeight: '500',
   },
 };
 
